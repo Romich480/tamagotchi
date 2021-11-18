@@ -14,7 +14,7 @@ namespace Tamagotchi
             cat.speak();
             Goose goose = new Goose("гусь");
             goose.speak();
-            Console.WriteLine(goose.Name);
+            goose.die();
         }
     }
 }
