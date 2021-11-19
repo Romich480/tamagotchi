@@ -15,7 +15,7 @@ namespace Tamagotchi
         public override void speak()
         {
             base.speak();
-            Console.WriteLine("га-га-га");
+            Console.WriteLine("я гусь, можно до вас я доябусь");
         }
     }
 }

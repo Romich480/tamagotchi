@@ -30,9 +30,9 @@ namespace Tamagotchi
             {
                 animal = new Goose("гусь");
             }
-            int cycle = 0;
-            while (cycle != 69)
+            while (animal.IsAlive)
             {
+                Console.WriteLine(" ");
                 Console.WriteLine("Выберите действие");
                 Console.WriteLine("1> Попросить поговорить");
                 Console.WriteLine("2> Покормить");
@@ -56,11 +56,10 @@ namespace Tamagotchi
                 else if (choise == 4)
                 {
                     animal.die();
-                    cycle = 69;
                 }
                 else
                 {
-                    cycle = 69;
+                    animal.IsAlive = false;
                 }
             }
         }

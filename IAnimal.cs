@@ -11,6 +11,6 @@ namespace Tamagotchi
         public void drink();
         public void speak();
 
-        
+
     }
 }
