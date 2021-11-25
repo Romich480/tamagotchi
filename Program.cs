@@ -38,8 +38,9 @@ namespace Tamagotchi
                 Console.WriteLine("2> Покормить");
                 Console.WriteLine("3> Напоить");
                 Console.WriteLine("4> Поиграть");
-                Console.WriteLine("5> Убить");
-                Console.WriteLine("6> Закончить игру");
+                Console.WriteLine("5> Показать показатели");
+                Console.WriteLine("6> Убить");
+                Console.WriteLine("7> Закончить игру");
                 Console.WriteLine(" ");
                 string choise0 = Console.ReadLine();
                 int choise = int.Parse(choise0);
@@ -62,6 +63,10 @@ namespace Tamagotchi
                         animal.play();
                     }
                     else if (choise == 5)
+                    {
+                        animal.Print();
+                    }
+                    else if (choise == 6)
                     {
                         animal.die();
                     }

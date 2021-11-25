@@ -12,7 +12,6 @@ namespace Tamagotchi
         private readonly Timer startWantToPlayTimer;
         private readonly Timer startDeathTimer;
         private readonly Timer startSec;
-        private readonly Timer startPrint;
         bool IsStarving = true;
         bool IsThirsty = true;
         bool IsWantToPlay = true;
@@ -42,7 +41,7 @@ namespace Tamagotchi
 
         public void drink()
         {
-            if ((IsThirsty) & (IsAlive))
+            if ((IsThirsty) && (IsAlive))
             {
                 Console.WriteLine("Drinking...");
                 startDeathTimer.Enabled = false;
@@ -53,7 +52,7 @@ namespace Tamagotchi
 
         public void eat()
         {
-            if ((IsStarving) & (IsAlive))
+            if ((IsStarving) && (IsAlive))
             {
                Console.WriteLine("Eating...");
                startDeathTimer.Enabled = false;
@@ -63,7 +62,7 @@ namespace Tamagotchi
         }
         public void play()
         {
-            if ((IsWantToPlay) & (IsAlive))
+            if ((IsWantToPlay) && (IsAlive))
             {
                 Console.WriteLine("Playing...");
                 startDeathTimer.Enabled = false;
@@ -107,7 +106,6 @@ namespace Tamagotchi
             Console.WriteLine(" ");
             Console.WriteLine(" ");
 
-            startPrint.Enabled = true;
         }
 
         private void StartStarving(object? sender, ElapsedEventArgs e)
@@ -148,13 +146,6 @@ namespace Tamagotchi
                 life();
             }
         }
-        private void StartPrint(object? sender, ElapsedEventArgs e)
-        {
-            if (IsAlive)
-            {
-                Print();
-            }
-        }
         public TestAnimal(string name)
         {
             this.name = name;
@@ -181,10 +172,6 @@ namespace Tamagotchi
             this.startSec = new Timer(1000);
             startSec.Elapsed += StartSec;
             startSec.Enabled = true;
-
-            this.startPrint = new Timer(4000);
-            startPrint.Elapsed += StartPrint;
-            startPrint.Enabled = true;
         }
 
         
