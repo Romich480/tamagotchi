@@ -71,7 +71,7 @@ namespace Tamagotchi
                     }
                 }
                 else
-                    Console.WriteLine("Зверушка уже померла, теперь живите с этим");
+                    Console.WriteLine("Зверушка уже померла, теперь живи с этим");
             }
         }
     }

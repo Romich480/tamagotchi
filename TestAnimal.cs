@@ -47,7 +47,7 @@ namespace Tamagotchi
                 Console.WriteLine("Drinking...");
                 startDeathTimer.Enabled = false;
                 startThirstyTimer.Enabled = true;
-                thirst = 15;
+                thirst = 20;
             }
         }
 
@@ -58,7 +58,7 @@ namespace Tamagotchi
                Console.WriteLine("Eating...");
                startDeathTimer.Enabled = false;
                startStarvingTimer.Enabled = true;
-               hunger = 20;
+               hunger = 25;
             }
         }
         public void play()
@@ -68,7 +68,7 @@ namespace Tamagotchi
                 Console.WriteLine("Playing...");
                 startDeathTimer.Enabled = false;
                 startWantToPlayTimer.Enabled = true;
-                mood = 25;
+                mood = 30;
             }
         }
         public virtual void speak()
@@ -163,17 +163,17 @@ namespace Tamagotchi
             this.startStarvingTimer = new Timer(15000);
             startStarvingTimer.Elapsed += StartStarving;
             startStarvingTimer.Enabled = true;
-            hunger = 20;
+            hunger = 25;
 
             this.startThirstyTimer = new Timer(10000);
             startThirstyTimer.Elapsed += StartThirsty;
             startThirstyTimer.Enabled = true;
-            thirst = 15;
+            thirst = 20;
 
             this.startWantToPlayTimer = new Timer(20000);
             startWantToPlayTimer.Elapsed += StartWantToPlay;
             startWantToPlayTimer.Enabled = true;
-            mood = 25;
+            mood = 30;
 
             this.startDeathTimer = new Timer(10000);
             startDeathTimer.Elapsed += StartDeath;
@@ -182,7 +182,7 @@ namespace Tamagotchi
             startSec.Elapsed += StartSec;
             startSec.Enabled = true;
 
-            this.startPrint = new Timer(4900);
+            this.startPrint = new Timer(4000);
             startPrint.Elapsed += StartPrint;
             startPrint.Enabled = true;
         }
