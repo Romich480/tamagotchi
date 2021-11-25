@@ -9,7 +9,8 @@ namespace Tamagotchi
         public void die();
         public void eat();
         public void drink();
-        public void speak();
+        public void speak(); 
+        public void play();
 
 
     }

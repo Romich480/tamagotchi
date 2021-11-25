@@ -37,30 +37,40 @@ namespace Tamagotchi
                 Console.WriteLine("1> Попросить поговорить");
                 Console.WriteLine("2> Покормить");
                 Console.WriteLine("3> Напоить");
-                Console.WriteLine("4> Убить");
-                Console.WriteLine("5> Закончить игру");
+                Console.WriteLine("4> Поиграть");
+                Console.WriteLine("5> Убить");
+                Console.WriteLine("6> Закончить игру");
                 string choise0 = Console.ReadLine();
                 int choise = int.Parse(choise0);
-                if (choise == 1)
+                if (animal.IsAlive)
                 {
-                    animal.speak();
-                }
-                else if (choise == 2)
-                {
-                    animal.eat();
-                }
-                else if (choise == 3)
-                {
-                    animal.drink();
-                }
-                else if (choise == 4)
-                {
-                    animal.die();
+                    if (choise == 1)
+                    {
+                        animal.speak();
+                    }
+                    else if (choise == 2)
+                    {
+                        animal.eat();
+                    }
+                    else if (choise == 3)
+                    {
+                        animal.drink();
+                    }
+                    else if (choise == 4)
+                    {
+                        animal.play();
+                    }
+                    else if (choise == 5)
+                    {
+                        animal.die();
+                    }
+                    else
+                    {
+                        animal.IsAlive = false;
+                    }
                 }
                 else
-                {
-                    animal.IsAlive = false;
-                }
+                    Console.WriteLine("Зверушка уже померла, теперь живите с этим");
             }
         }
     }
