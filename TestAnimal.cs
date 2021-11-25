@@ -11,16 +11,24 @@ namespace Tamagotchi
         private readonly Timer startThirstyTimer;
         private readonly Timer startWantToPlayTimer;
         private readonly Timer startDeathTimer;
+        private readonly Timer startSec;
+        private readonly Timer startPrint;
         bool IsStarving = true;
         bool IsThirsty = true;
         bool IsWantToPlay = true;
         public bool IsAlive = true; 
 
         string name;
+        int hunger;
+        int thirst;
+        int mood;
         int age; 
 
         public string Name { get; }
         public int Age { set; get; }
+        public int Thirst { set; get; }
+        public int Mood { set; get; }
+        public int Hunger { set; get; }
         public void die()
         {
             Console.WriteLine("DIE MAZAFAKA DIE");
@@ -39,6 +47,7 @@ namespace Tamagotchi
                 Console.WriteLine("Drinking...");
                 startDeathTimer.Enabled = false;
                 startThirstyTimer.Enabled = true;
+                thirst = 15;
             }
         }
 
@@ -49,6 +58,7 @@ namespace Tamagotchi
                Console.WriteLine("Eating...");
                startDeathTimer.Enabled = false;
                startStarvingTimer.Enabled = true;
+               hunger = 20;
             }
         }
         public void play()
@@ -58,6 +68,7 @@ namespace Tamagotchi
                 Console.WriteLine("Playing...");
                 startDeathTimer.Enabled = false;
                 startWantToPlayTimer.Enabled = true;
+                mood = 25;
             }
         }
         public virtual void speak()
@@ -66,21 +77,57 @@ namespace Tamagotchi
                 Console.WriteLine("Speaking...");
         }
 
+        public void life()
+        {
+            this.age++;
+            this.hunger--;
+            this.thirst--;
+            this.mood--;
+            startSec.Enabled = true;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(" ");
+            Console.Write("возраст зверька - ");
+            Console.Write(this.age);
+
+            Console.WriteLine(" ");
+            Console.Write("голод зверька - ");
+            Console.Write(this.hunger);
+
+            Console.WriteLine(" ");
+            Console.Write("жажда зверька - ");
+            Console.Write(this.thirst);
+
+            Console.WriteLine(" ");
+            Console.Write("настроение зверька - ");
+            Console.Write(this.mood);
+
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+
+            startPrint.Enabled = true;
+        }
+
         private void StartStarving(object? sender, ElapsedEventArgs e)
         {
             startStarvingTimer.Enabled = false;
+            Console.WriteLine(" ");
             Console.WriteLine("ГАААААЛЯЯЯЯЯЯЯЯЯЯЯ ЖРААААААААААААААТЬ!!!");
             startDeathTimer.Enabled = true;
         }
         private void StartThirsty(object? sender, ElapsedEventArgs e)
         {
             startThirstyTimer.Enabled = false;
+            Console.WriteLine(" ");
             Console.WriteLine("ГАААААЛЯЯЯЯЯЯЯЯЯЯЯ ПИИИИИИИИИИИИИИИТЬ!!!");
             startDeathTimer.Enabled = true;
         }
          private void StartWantToPlay(object? sender, ElapsedEventArgs e)
         {
             startWantToPlayTimer.Enabled = false;
+            Console.WriteLine(" ");
             Console.WriteLine("ГАААААЛЯЯЯЯЯЯЯЯЯЯЯ ИГРАААААААААААААТЬ!!!");
             startDeathTimer.Enabled = true;
         }
@@ -94,6 +141,20 @@ namespace Tamagotchi
             }
         }
 
+        private void StartSec(object? sender, ElapsedEventArgs e)
+        {
+            if (IsAlive)
+            {
+                life();
+            }
+        }
+        private void StartPrint(object? sender, ElapsedEventArgs e)
+        {
+            if (IsAlive)
+            {
+                Print();
+            }
+        }
         public TestAnimal(string name)
         {
             this.name = name;
@@ -102,17 +163,28 @@ namespace Tamagotchi
             this.startStarvingTimer = new Timer(15000);
             startStarvingTimer.Elapsed += StartStarving;
             startStarvingTimer.Enabled = true;
+            hunger = 20;
 
             this.startThirstyTimer = new Timer(10000);
             startThirstyTimer.Elapsed += StartThirsty;
             startThirstyTimer.Enabled = true;
+            thirst = 15;
 
             this.startWantToPlayTimer = new Timer(20000);
             startWantToPlayTimer.Elapsed += StartWantToPlay;
             startWantToPlayTimer.Enabled = true;
+            mood = 25;
 
             this.startDeathTimer = new Timer(10000);
             startDeathTimer.Elapsed += StartDeath;
+
+            this.startSec = new Timer(1000);
+            startSec.Elapsed += StartSec;
+            startSec.Enabled = true;
+
+            this.startPrint = new Timer(4900);
+            startPrint.Elapsed += StartPrint;
+            startPrint.Enabled = true;
         }
 
         

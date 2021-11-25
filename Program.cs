@@ -40,6 +40,7 @@ namespace Tamagotchi
                 Console.WriteLine("4> Поиграть");
                 Console.WriteLine("5> Убить");
                 Console.WriteLine("6> Закончить игру");
+                Console.WriteLine(" ");
                 string choise0 = Console.ReadLine();
                 int choise = int.Parse(choise0);
                 if (animal.IsAlive)
